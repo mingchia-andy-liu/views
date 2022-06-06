@@ -1,3 +1,5 @@
+import { badgen } from "badgen"
+
 export const getName = (url: URL) => {
   let pathname = url.pathname
 
@@ -17,4 +19,12 @@ export const getName = (url: URL) => {
   }
 
   return pathname
+}
+
+export const generateBadgeSvg = (name: string, value: string) => {
+  return badgen({
+    label: name,
+    status: value,
+    color: 'green',
+  })
 }

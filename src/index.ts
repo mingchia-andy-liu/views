@@ -1,4 +1,4 @@
-import { getName } from './utils'
+import { getName, generateBadgeSvg } from './utils'
 
 // In order for the workers runtime to find the class that implements
 // our Durable Object namespace, we must export it from the root module.
@@ -34,7 +34,11 @@ async function handleRequest(request: Request, env: Env) {
   const res = await obj.fetch(request.url)
   const count = parseInt(await res.text())
 
-  return new Response(`Durable Object '${name}' ${count}`)
+  return new Response(generateBadgeSvg(name, count.toString()), {
+    headers: {
+      'Content-Type': 'image/svg+xml'
+    }
+  })
 }
 
 interface Env {
