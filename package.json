@@ -5,6 +5,7 @@
   "description": "A template for kick starting a Cloudflare Workers project",
   "module": "./dist/index.mjs",
   "scripts": {
+    "dev": "wrangler dev",
     "build": "rollup -c",
     "format": "prettier --write '**/*.{ts,md}'"
   },
