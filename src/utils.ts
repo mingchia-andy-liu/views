@@ -1,30 +1,42 @@
-import { badgen } from "badgen"
+import { badgen } from 'badgen';
 
-export const getName = (url: URL) => {
-  let pathname = url.pathname
-
-  if (pathname.startsWith('/')) {
-    pathname = pathname.slice(1)
-  }
-  if (pathname === '') {
-    throw new Error('home route not supported')
-  }
-  if (pathname.endsWith('/')) {
-    pathname = pathname.slice(0, -1)
-  }
-
-  const paths = pathname.split('/')
-  if (paths.length != 1) {
-    throw new Error('nested route')
-  }
-
-  return pathname
+interface Options {
+  style?: 'text' | 'badge';
+  label?: string;
 }
+
+export const validateAndGetName = (url: URL) => {
+  if (url.pathname !== '/') {
+    throw new Error('not found');
+  }
+
+  const page = url.searchParams.get('page');
+  if (page == null || page == '') {
+    throw new Error('page target not found');
+  }
+
+  return page;
+};
 
 export const generateBadgeSvg = (name: string, value: string) => {
   return badgen({
     label: name,
     status: value,
     color: 'green',
-  })
-}
+  });
+};
+
+export const parseQueryString = (url: URL): Options => {
+  const option: Options = {};
+  const style = url.searchParams.get('style');
+  if (style && (style == 'text' || style == 'badge')) {
+    option.style = style;
+  }
+
+  const label = url.searchParams.get('label');
+  if (label) {
+    option.label = label;
+  }
+
+  return option;
+};
