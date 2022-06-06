@@ -1,7 +1,6 @@
 name = "views"
-# type = "javascript" is required to use the `[build]` section
 type = "javascript"
-account_id = ""
+account_id = "f92057d66db62e6c5d714337ba723616"
 workers_dev = true
 route = ""
 zone_id = ""
@@ -18,5 +17,10 @@ main = "./index.mjs"
 bindings = [{name = "COUNTER", class_name = "Counter"}]
 
 [[migrations]]
-tag = "v1" # Should be unique for each entry
+tag = "v1"
 new_classes = ["Counter"]
+
+[env.production]
+workers_dev = false
+route = "https://views.aliu.dev/*"
+zone_id = "5274e0bb9fb112a781d5aaa10f1dc293"
