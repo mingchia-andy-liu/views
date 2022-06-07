@@ -6,6 +6,10 @@ route = ""
 zone_id = ""
 compatibility_date = "2022-06-05"
 
+kv_namespaces = [
+    { binding = "COUNTER", id = "daf16e26da904255b85e26290d5d6d82", preview_id = "826ee3c4b54c49148da336bf9d11486a" }
+]
+
 [build]
 command = "npm run build"
 [build.upload]
@@ -13,14 +17,19 @@ command = "npm run build"
 format = "modules"
 main = "./index.mjs"
 
-[durable_objects]
-bindings = [{name = "COUNTER", class_name = "Counter"}]
+# Uncomment to use durable objects and comment out kv_namespaces
+# [durable_objects]
+# bindings = [{name = "COUNTER", class_name = "Counter"}]
 
-[[migrations]]
-tag = "v1"
-new_classes = ["Counter"]
+# [[migrations]]
+# tag = "v1"
+# new_classes = ["Counter"]
 
 [env.production]
 workers_dev = false
 route = "https://views.aliu.dev/*"
 zone_id = "5274e0bb9fb112a781d5aaa10f1dc293"
+kv_namespaces = [
+    { binding = "COUNTER", id = "8623fbecf668401e936ba36c80308df3" }
+]
+

@@ -4,8 +4,9 @@ This is a simple project for me to track the number of visit on my site without 
 
 I want a tool that is easy and somewhat accurate. I use durable object to see what it can do as I've used other tech from Cloudflare before.
 
-![View count](https://views.aliu.dev?page=https://github.com/mingchia-andy-liu/views&label=Views")
+![View count](https://views.aliu.dev?page=https://github.com/mingchia-andy-liu/views&label=Views)
 
+The current production is powered by KV which is eventual consistent. I do not need a real-time view count. You can use Durable Object which is also supported by commenting out the KV section.
 
 ### 🚀 Usage
 
@@ -21,7 +22,6 @@ Markdown
 ![View count](https://views.aliu.dev?page=https://github.com/mingchia-andy-liu/views&label=Views")
 ```
 
-
 ### 🛠 Options
 
 | Option | Required | Type | Note |
@@ -32,7 +32,9 @@ Markdown
 
 ### 📗 Stack
 
-- [Durable Object](https://developers.cloudflare.com/workers/learning/using-durable-objects)
+- [Durable Object](https://developers.cloudflare.com/workers/learning/using-durable-objects). Not in prod as it costs moeny.
+    - see comments for how to use Durable Object
+- [KV](https://developers.cloudflare.com/workers/runtime-apis/kv/) 
 - [Wrangler (1.19.3+)](https://github.com/cloudflare/wrangler)
 - TypeScript
 - Rollup
