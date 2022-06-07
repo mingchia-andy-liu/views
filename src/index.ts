@@ -60,6 +60,7 @@ async function handleRequest(request: Request, env: Env) {
     {
       headers: {
         'Content-Type': 'image/svg+xml',
+        'Cache-control': 'private, max-age=0, no-cache'
       },
     },
   );
