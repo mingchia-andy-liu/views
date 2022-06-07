@@ -1,10 +1,9 @@
 # Views
+![View count](https://views.aliu.dev?page=https://github.com/mingchia-andy-liu/views&label=Views)
 
 This is a simple project for me to track the number of visit on my site without a crazy GA setup. I just need something that track the count and return to me the total. Also, some of the analaytics tracking tool are blocked by ad-blockers or requires javascript enabled.
 
 I want a tool that is easy and somewhat accurate. I use durable object to see what it can do as I've used other tech from Cloudflare before.
-
-![View count](https://views.aliu.dev?page=https://github.com/mingchia-andy-liu/views&label=Views)
 
 The current production is powered by KV which is eventual consistent. I do not need a real-time view count. You can use Durable Object which is also supported by commenting out the KV section.
 
@@ -19,7 +18,7 @@ html
 
 Markdown
 ```md
-![View count](https://views.aliu.dev?page=https://github.com/mingchia-andy-liu/views&label=Views")
+![View count](https://views.aliu.dev?page=https://github.com/mingchia-andy-liu/views&label=Views)
 ```
 
 ### 🛠 Options
